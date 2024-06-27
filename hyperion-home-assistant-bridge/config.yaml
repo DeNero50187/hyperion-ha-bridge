@@ -1,0 +1,20 @@
+name: "Hyperion HA Bridge"
+version: "1.0.0"
+slug: hyperion-home-assitant-bridge
+description: >-
+  "Hyperion HA Bridge"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+url: "https://github.com/hugoyugou/hyperion-ha-bridge"
+ports:
+  41234/udp: 41234
+hassio_api: true
+homeassistant_api: true
+map:
+  - config:rw
+  - ssl
+init: false
