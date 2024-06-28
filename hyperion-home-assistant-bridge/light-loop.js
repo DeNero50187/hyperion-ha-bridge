@@ -4,12 +4,13 @@ const { sleep } = require("./util.js");
 const latest_color = require("./latest_color.js");
 const { getConfig } = require("./get-config.js");
 const { lights } = getConfig();
+const rate = require("./rate.js");
 
 async function send_color(
   light_data,
   color,
   max_brightness,
-  duration = 0.18,
+  rtt = 0.18,
   debug = false
 ) {
   const brightness = (color[0] + color[1] + color[2]) / 3 / 255;
@@ -20,7 +21,8 @@ async function send_color(
       brightness,
     });
   }
-  let body = { entity_id: `light.${light_data.id}`, transition: 0.18 };
+  const rps = rate.get() / 1000;
+  let body = { entity_id: `light.${light_data.id}`, transition: rps - Math.max(0, Math.min(rps, 1, rtt)) };
 
   if (light_data.type == "rgb") {
     body.rgb_color = color;
