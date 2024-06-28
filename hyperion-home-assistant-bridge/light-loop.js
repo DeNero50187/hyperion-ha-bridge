@@ -22,7 +22,7 @@ async function send_color(
     });
   }
   const rps = rate.get() / 1000;
-  let body = { entity_id: `light.${light_data.id}`, transition: rps - Math.max(0, Math.min(rps, 1, rtt)) };
+  let body = { entity_id: `light.${light_data.id}`, transition: rps - Math.max(0, Math.min(rps, 1, rtt / 2)) };
 
   if (light_data.type == "rgb") {
     body.rgb_color = color;
