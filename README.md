@@ -7,3 +7,5 @@
 This repository contains the following add-ons
 
 ### [Hyperion HA Bridge](./hyperion-home-assistant-bridge)
+
+Fork it to yourself in order to change config.js
